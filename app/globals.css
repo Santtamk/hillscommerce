@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f2f0e9;
+  --color-pine: #2c3e2e;
+  --color-rust: #bc4b35;
+  --color-stone: #d6d3cd;
+
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-pine);
+
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-geist-sans);
+
+  --radius-organic: 2px 8px 3px 6px;
+
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Global Reset & Base Styles */
+body {
+  background-color: var(--color-paper);
+  color: var(--color-pine);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling for a vintage feel if needed, or keeping it clean */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone);
+  border-radius: 4px;
+}
