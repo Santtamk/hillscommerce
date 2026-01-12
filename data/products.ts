@@ -171,7 +171,7 @@ export const products: Product[] = [
     description: 'Famous local sticky candy made from condensed milk and sugar. A nostalgic treat representing the sweet heritage of Kalimpong.',
     category: 'Pantry',
     status: 'available',
-    image: '/images/products/himalayan_spices_pickle.png',
+    image: '/images/products/kalimpong_lollipop.png',
   },
   {
     id: '17',
@@ -181,7 +181,7 @@ export const products: Product[] = [
     description: 'Mouth-watering fruit strips made from hog plum or lapsi. A perfect balance of sweet, sour, and spicy flavors.',
     category: 'Pantry',
     status: 'available',
-    image: '/images/products/himalayan_spices_pickle.png',
+    image: '/images/products/titaura_plum.png',
   },
   {
     id: '18',
@@ -191,7 +191,7 @@ export const products: Product[] = [
     description: 'Seasonal edible orchid flowers, prized for their bitter-sweet taste. Delicately harvested and often cooked with potatoes or meat.',
     category: 'Pantry',
     status: 'sold',
-    image: '/images/products/himalayan_spices_pickle.png',
+    image: '/images/products/nakima_orchid.png',
   },
   {
     id: '19',
@@ -201,7 +201,7 @@ export const products: Product[] = [
     description: 'Fermented young bamboo shoots pickled with spices. Crunchy, tangy, and aromatic, it adds a kick to any rice meal.',
     category: 'Pantry',
     status: 'available',
-    image: '/images/products/himalayan_spices_pickle.png',
+    image: '/images/products/bamboo_shoot_pickle.png',
   },
   {
     id: '20',
@@ -211,7 +211,7 @@ export const products: Product[] = [
     description: 'Raw, unfiltered honey collected from wild hives in the forests. Dark, viscous, and containing the essence of medicinal alpine flora.',
     category: 'Pantry',
     status: 'available',
-    image: '/images/products/himalayan_spices_pickle.png',
+    image: '/images/products/wild_himalayan_honey.png',
   },
 
   // Group C: Textiles & Wearables (21-30)
@@ -223,7 +223,7 @@ export const products: Product[] = [
     description: "Traditionally woven fabric featuring the distinctive stripe patterns of the Lepcha tribe. Durable and culturally significant, suitable for coats or heavy throws.",
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/lepcha_dumdem_fabric.png',
   },
   {
     id: '22',
@@ -233,7 +233,7 @@ export const products: Product[] = [
     description: 'Luxuriously soft and incredibly warm shawl woven from the underbelly wool of yaks. Natural grey color, undyed, breathing the warmth of the high altitude.',
     category: 'Textiles',
     status: 'sold',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/yak_wool_shawl_grey.png',
   },
   {
     id: '23',
@@ -243,7 +243,7 @@ export const products: Product[] = [
     description: 'Brightly colored, striped woven cloth used to make the traditional Pangden apron. Symbolizes the married status of Bhutia women and vibrant Himalayan aesthetics.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/bhutia_pangden_cloth.png',
   },
   {
     id: '24',
@@ -253,7 +253,7 @@ export const products: Product[] = [
     description: 'Chunky, hand-knitted socks made by local grandmothers. Perfect for keeping toes warm during the freezing Darjeeling winters.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/woolen_socks_thick.png',
   },
   {
     id: '25',
@@ -263,7 +263,7 @@ export const products: Product[] = [
     description: 'The iconic geometric patterned cap of the Gorkhas. Made from Dhaka fabric, it is a symbol of pride and identity in the hills.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/dhaka_topi_cap.png',
   },
   {
     id: '26',
@@ -273,7 +273,7 @@ export const products: Product[] = [
     description: 'Soft sheep wool scarf dyed with natural plant extracts like madder and walnut. Warm, sustainable, and gentle on the skin.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/sheep_wool_muffler.png',
   },
   {
     id: '27',
@@ -283,7 +283,7 @@ export const products: Product[] = [
     description: 'A white silk scarf offered as a sign of respect and well-wishes in Himalayan culture. Features auspicious woven symbols of good fortune.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/silk_khada_scarf.png',
   },
   {
     id: '28',
@@ -293,7 +293,7 @@ export const products: Product[] = [
     description: 'Richly patterned silk brocade fabric used for making Chubas (traditional robes). Shimmers with gold threads and intricate dragon or floral motifs.',
     category: 'Textiles',
     status: 'sold',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/tibetan_chuba_brocade.png',
   },
   {
     id: '29',
@@ -303,7 +303,7 @@ export const products: Product[] = [
     description: 'Cozy indoor slippers made from compressed, felted wool. Breathable yet insulating, keeping feet at the perfect temperature.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/felted_wool_slippers.png',
   },
   {
     id: '30',
@@ -313,7 +313,7 @@ export const products: Product[] = [
     description: 'Sturdy canvas bag with goat leather trims. Designed for the daily trip to the bazaar, strong enough to carry vegetables and stylish enough for town.',
     category: 'Textiles',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/canvas_leather_not_bag.png',
   },
 
   // Group D: Crafts & Home (31-40)
@@ -325,7 +325,7 @@ export const products: Product[] = [
     description: 'A traditional vessel carved from a single bamboo node. Smoked to seal and color it, often used for drinking "Tongba" or millet beer.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/bamboo_beer_mug.png',
   },
   {
     id: '32',
@@ -335,7 +335,7 @@ export const products: Product[] = [
     description: 'Lightweight yet durable stool woven from cane. A staple in every verandah, perfect for sitting low and enjoying the mountain view.',
     category: 'Crafts',
     status: 'sold',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/cane_murrah_stool.png',
   },
   {
     id: '33',
@@ -345,7 +345,7 @@ export const products: Product[] = [
     description: 'Hand-carved wooden mask depicting Bhairab, the fierce manifestation of Shiva. Used in traditional dances and as a protective wall hanging.',
     category: 'Art',
     status: 'available',
-    image: '/images/products/thangka_art_style.png',
+    image: '/images/products/wooden_mask_bhairab.png',
   },
   {
     id: '34',
@@ -355,7 +355,7 @@ export const products: Product[] = [
     description: 'Artisan-made copper jug with a hammered finish. Believed to impart health benefits to the water stored within.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/copper_water_jug.png',
   },
   {
     id: '35',
