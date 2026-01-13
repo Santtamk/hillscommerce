@@ -365,7 +365,7 @@ export const products: Product[] = [
     description: 'A small, free-standing prayer wheel for your desk. Contains microscopic scrolls of mantras; spinning it is said to spread compassion.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/miniature_prayer_wheel.png',
   },
   {
     id: '36',
@@ -375,7 +375,7 @@ export const products: Product[] = [
     description: 'Carved wood or knotted cord depicting the Endless Knot. A symbol of the interconnectedness of all things and eternal wisdom.',
     category: 'Art',
     status: 'available',
-    image: '/images/products/thangka_art_style.png',
+    image: '/images/products/knot_eternity_wall_hanging.png',
   },
   {
     id: '37',
@@ -385,7 +385,7 @@ export const products: Product[] = [
     description: 'Unique sculpture carved from the gnarled root of a bamboo plant. Naturally shaped by the earth, refined by the artist\'s hand.',
     category: 'Art',
     status: 'sold',
-    image: '/images/products/thangka_art_style.png',
+    image: '/images/products/bamboo_root_sculpture.png',
   },
   {
     id: '38',
@@ -395,7 +395,7 @@ export const products: Product[] = [
     description: 'Simple and elegant incense holder carved from fragrant Juniper wood. Adds a woody scent of its own when near heat.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/juniper_incense_holder.png',
   },
   {
     id: '39',
@@ -405,7 +405,7 @@ export const products: Product[] = [
     description: 'Solid brass lamp used for burning butter or oil in offerings. symbolising the illumination of wisdom.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/brass_butter_lamp.png',
   },
   {
     id: '40',
@@ -415,7 +415,7 @@ export const products: Product[] = [
     description: 'Ornately engraved Kukri knife with a bone or wood handle. Intended for display to honor the martial history of the region.',
     category: 'Crafts',
     status: 'sold',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/decorative_kukri_knife.png',
   },
 
   // Group E: Art & Wellness (41-50)
@@ -427,7 +427,7 @@ export const products: Product[] = [
     description: 'Handmade paper from the Daphne shrub, bound in local leather. The textured acid-free pages are perfect for sketching or journaling.',
     category: 'Art',
     status: 'available',
-    image: '/images/products/himalayan_wool_fabric.png',
+    image: '/images/products/argeli_paper_journal.png',
   },
   {
     id: '42',
@@ -437,7 +437,7 @@ export const products: Product[] = [
     description: 'Masterfully painted Thangka of Green Tara. Created using mineral pigments and gold dust on cotton canvas. A spiritual masterpiece.',
     category: 'Art',
     status: 'sold',
-    image: '/images/products/thangka_art_style.png',
+    image: '/images/products/thangka_painting_green_tara.png',
   },
   {
     id: '43',
@@ -447,7 +447,7 @@ export const products: Product[] = [
     description: 'Hand-hammered singing bowl made from a traditional seven-metal alloy. Produces a deep, resonating sound for meditation and healing.',
     category: 'Wellness',
     status: 'available',
-    image: '/images/products/himalayan_wellness_oils.png',
+    image: '/images/products/singing_bowl_7_metal.png',
   },
   {
     id: '44',
@@ -457,7 +457,7 @@ export const products: Product[] = [
     description: 'Natural incense sticks made with dried rhododendron flowers and herbs. Clears the air and creates a peaceful atmosphere.',
     category: 'Wellness',
     status: 'available',
-    image: '/images/products/himalayan_wellness_oils.png',
+    image: '/images/products/rhododendron_incense_sticks.png',
   },
   {
     id: '45',
@@ -467,7 +467,7 @@ export const products: Product[] = [
     description: 'pure essential oil distilled from locally grown lemongrass. Citrussy and uplifting, used for aromatherapy or natural insect repellent.',
     category: 'Wellness',
     status: 'available',
-    image: '/images/products/himalayan_wellness_oils.png',
+    image: '/images/products/lemongrass_essential_oil.png',
   },
   {
     id: '46',
@@ -477,7 +477,7 @@ export const products: Product[] = [
     description: 'Moisturizing soap bar made with rich yak milk and natural oils. Gentle on the skin and free from harsh chemicals.',
     category: 'Wellness',
     status: 'available',
-    image: '/images/products/himalayan_wellness_oils.png',
+    image: '/images/products/yak_milk_soap.png',
   },
   {
     id: '47',
@@ -487,7 +487,7 @@ export const products: Product[] = [
     description: 'Set of bookmarks featuring real pressed wildflowers from the Darjeeling hills. Laminated to preserve their delicate beauty.',
     category: 'Art',
     status: 'available',
-    image: '/images/products/thangka_art_style.png',
+    image: '/images/products/pressed_flower_bookmark.png',
   },
   {
     id: '48',
@@ -497,7 +497,7 @@ export const products: Product[] = [
     description: 'Hand-thrown pot with side holes, specifically designed for orchids. Made from local clay and glazed in earth tones.',
     category: 'Crafts',
     status: 'sold',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/ceramic_orchid_pot.png',
   },
   {
     id: '49',
@@ -507,7 +507,7 @@ export const products: Product[] = [
     description: 'Pure beeswax candle rolled by hand. Burns with a clean, bright flame and a subtle honey scent.',
     category: 'Wellness',
     status: 'available',
-    image: '/images/products/himalayan_wellness_oils.png',
+    image: '/images/products/beeswax_candle_monastery.png',
   },
   {
     id: '50',
@@ -517,6 +517,6 @@ export const products: Product[] = [
     description: 'Set of drinking glasses upcycled from iconic Old Monk rum bottles. Polished edges and a quirky tribute to a local favorite spirit.',
     category: 'Crafts',
     status: 'available',
-    image: '/images/products/bamboo_wood_craft.png',
+    image: '/images/products/old_monk_rum_glass.png',
   },
 ];

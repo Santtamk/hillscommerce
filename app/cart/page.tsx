@@ -15,7 +15,10 @@ export default function CartPage() {
 
   // Hydration fix
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   // Calculate total
   const total = cart.reduce((sum, item) => sum + item.price, 0);

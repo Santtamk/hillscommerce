@@ -5,7 +5,7 @@ import { Product } from "@/data/products";
 import { useCartStore } from "@/store/cartStore";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { ShoppingBag } from "lucide-react";
+
 
 interface ProductCardProps {
   product: Product;
@@ -21,7 +21,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative bg-white p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
+      className="group relative flex flex-col h-full bg-white p-4 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-md"
       style={{
         borderRadius: "var(--radius-organic)", // Use CSS variable or fallback
       }}
@@ -47,7 +47,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Info */}
-      <div className="mt-4 flex items-start justify-between font-serif">
+      <div className="mt-4 flex flex-1 items-start justify-between font-serif">
         <div className="space-y-1">
           <h3 className="text-lg font-medium leading-tight text-[var(--color-pine)]">
             {product.title}

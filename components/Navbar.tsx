@@ -11,7 +11,10 @@ export default function Navbar() {
   const { site } = siteContent;
   // Hydration fix for persisted store
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b border-[var(--color-stone)] bg-[var(--color-paper)]/85 backdrop-blur-md transition-all">
