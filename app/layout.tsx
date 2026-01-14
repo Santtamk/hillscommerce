@@ -1,23 +1,32 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Geist } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ContactSection from "@/components/ContactSection";
+import SmoothScroll from "@/components/SmoothScroll";
 
-const cormorant = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  display: "swap",
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Himalayan Nostalgia | Handcrafted Products",
-  description: "Authentic handcrafted products from Darjeeling, Kalimpong & West Bengal hills.",
+  description: "Authentic handcrafted treasures from the Himalayan mountains.",
 };
 
 export default function RootLayout({
@@ -28,21 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={cn(
-          geistSans.variable,
-          cormorant.variable,
-          "antialiased min-h-screen relative overflow-x-hidden"
-        )}
+        className={`${inter.variable} ${playfair.variable} ${mono.variable} antialiased bg-[#FDFBF7] text-[#1C2321] selection:bg-[#BE5E46]/20`}
       >
-        {/* Global Noise Overlay */}
-        <div 
-          className="fixed inset-0 z-50 pointer-events-none opacity-[0.05] mix-blend-multiply" 
-          style={{ 
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-          }}
-        />
         
-        {children}
+        <Navbar />
+        <main className="flex-1 w-full">
+          {children}
+        </main>
+
+        <ContactSection />
+        <Footer />
       </body>
     </html>
   );

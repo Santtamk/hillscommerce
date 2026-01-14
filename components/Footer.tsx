@@ -1,31 +1,52 @@
-import { siteContent } from "@/data/content";
+import { Github, Instagram, Twitter } from "lucide-react";
+import Link from "next/link";
+import FadeIn from "@/components/FadeIn";
 
 export default function Footer() {
-  const { footer } = siteContent;
   return (
-    <footer className="w-full border-t border-[var(--color-stone)] bg-[var(--color-paper)] pb-12 pt-16">
-      <div className="mx-auto max-w-md px-6 text-center">
-        <div className="border-t-2 border-dashed border-[var(--color-stone)] pt-8 space-y-4">
-          <h4 className="font-serif text-xl italic text-[var(--color-pine)]">
-            Himalayan Nostalgia
-          </h4>
-          
-          <div className="space-y-2 font-mono text-xs uppercase tracking-widest text-[var(--color-pine)]/60">
-            <p>{footer.address.street}</p>
-            <p>{footer.address.city}</p>
-            <p>{footer.address.email}</p>
+    <footer className="w-full border-t border-[var(--color-stone)] bg-[#FDFBF7] px-6 py-12">
+      <FadeIn direction="up" fullWidth>
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row px-4">
+          {/* Brand */}
+          <div className="flex flex-col items-center md:items-start">
+            <Link href="/" className="font-serif text-2xl font-bold tracking-tight text-[var(--color-pine)]">
+              Himalayan Nostalgia
+            </Link>
+            <p className="mt-2 text-xs text-[var(--color-pine)]/60">
+              © {new Date().getFullYear()} All rights reserved.
+            </p>
+            <p className="mt-1 text-[10px] text-[var(--color-stone)]/50 font-mono tracking-widest uppercase">
+              Developed by Santamk
+            </p>
           </div>
 
-          <div className="pt-8">
-             <p className="font-mono text-[10px] text-[var(--color-stone)]">
-               {footer.copyright}
-             </p>
-             <p className="mt-2 font-mono text-[10px] text-[var(--color-stone)]">
-               {footer.tagline}
-             </p>
+          {/* Links */}
+          <div className="flex gap-8 text-sm text-[var(--color-pine)]/80">
+            <Link href="/shop" className="hover:text-[var(--color-rust)] transition-colors">
+              Shop
+            </Link>
+            <Link href="/about" className="hover:text-[var(--color-rust)] transition-colors">
+              About
+            </Link>
+            <Link href="/cart" className="hover:text-[var(--color-rust)] transition-colors">
+              Cart
+            </Link>
+          </div>
+
+          {/* Socials */}
+          <div className="flex gap-4 text-[var(--color-pine)]/70">
+            <a href="#" className="hover:text-[var(--color-rust)] transition-colors" aria-label="Instagram">
+              <Instagram size={20} />
+            </a>
+            <a href="#" className="hover:text-[var(--color-rust)] transition-colors" aria-label="Twitter">
+              <Twitter size={20} />
+            </a>
+            <a href="https://github.com/Santtamk" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--color-rust)] transition-colors" aria-label="GitHub">
+              <Github size={20} />
+            </a>
           </div>
         </div>
-      </div>
+      </FadeIn>
     </footer>
   );
 }

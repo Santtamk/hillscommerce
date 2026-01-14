@@ -47,16 +47,16 @@ export default function ProductCard({ product }: ProductCardProps) {
       </div>
 
       {/* Info */}
-      <div className="mt-4 flex flex-1 items-start justify-between font-serif">
+      <div className="mt-4 flex flex-col flex-1 justify-between font-serif min-h-[5rem]">
         <div className="space-y-1">
-          <h3 className="text-lg font-medium leading-tight text-[var(--color-pine)]">
+          <h3 className="text-lg font-medium leading-tight text-[var(--color-pine)] line-clamp-2 min-h-[3rem]">
             {product.title}
           </h3>
-          <p className="font-mono text-sm text-[var(--color-rust)]">
+          <p className="font-mono text-xs text-[var(--color-rust)]">
             {product.category}
           </p>
         </div>
-        <div className="font-mono text-lg font-bold tracking-tighter">
+        <div className="mt-2 font-mono text-lg font-bold tracking-tighter">
           ₹{product.price.toLocaleString("en-IN")}
         </div>
       </div>
