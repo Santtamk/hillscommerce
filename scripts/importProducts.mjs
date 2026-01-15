@@ -1,0 +1,578 @@
+import { createClient } from '@sanity/client';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Load environment variables from .env.local
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+dotenv.config({ path: path.resolve(__dirname, '../.env.local') });
+
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  token: process.env.SANITY_API_TOKEN,
+  apiVersion: '2024-01-01',
+  useCdn: false,
+});
+
+// We need to import the data. Since it's a TS file, we can't import it directly in Node easily without compilation.
+// Quick hack: Copy paste the data array here or use a regex to extract it if I fully automate it.
+// Ideally, I'd read the file. But for this task, I'll paste the data structure or require the user to handle the data source?
+// No, I should make it easy. I will read the file content and eval the array part? No that's risky.
+// Safest: Create a temporary .mjs data file or just embed the data.
+// Since I have the data in context (read previously), I will embed it directly into this script to ensure it runs smoothly without TS issues.
+
+const products = [
+  // Group A: The Tea & Brews (1-10)
+  {
+    id: '1',
+    slug: 'first-flush-moonlight-white-tea',
+    title: "First Flush 'Moonlight' White Tea",
+    price: 3500,
+    description: "Rare white tea harvested before dawn to preserve the delicate trichomes. Offers notes of honey and wildflowers with a silky mouthfeel. A pristine example of Darjeeling's finest spring harvest.",
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_moonlight_white.png',
+  },
+  {
+    id: '2',
+    slug: 'makaibari-roasted-oolong',
+    title: 'Makaibari Roasted Oolong',
+    price: 1800,
+    description: 'A robust, semi-oxidized tea from the legendary Makaibari estate. Roasted to perfection, it yields a cup with muscatel character and a warm, toasty finish.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_makaibari_oolong.png',
+  },
+  {
+    id: '3',
+    slug: 'rose-chamomile-hill-blend',
+    title: 'Rose & Chamomile Hill Blend',
+    price: 950,
+    description: 'A soothing caffeine-free blend of dried rose petals and Himalayan chamomile. Perfect for relaxation, with a floral aroma that calms the senses.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_rose_chamomile.png',
+  },
+  {
+    id: '4',
+    slug: 'rhododendron-flower-juice-concentrate',
+    title: 'Rhododendron Flower Juice (Concentrate)',
+    price: 600,
+    description: 'Rich, ruby-red concentrate made from wild rhododendron flowers. Sweet, tangy, and packed with antioxidants. Dilute with water or soda for a refreshing mountain drink.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/juice_rhododendron.png',
+  },
+  {
+    id: '5',
+    slug: 'organic-green-tea-whole-leaf',
+    title: 'Organic Green Tea (Whole Leaf)',
+    price: 1200,
+    description: 'Unfermented whole leaves that unfurl to release a fresh, grassy aroma. Rich in catechins and grown without chemicals in high-altitude gardens.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_organic_green.png',
+  },
+  {
+    id: '6',
+    slug: 'masala-chai-spiced-mix',
+    title: 'Masala Chai Spiced Mix',
+    price: 450,
+    description: 'A traditional blend of strong CTC tea and crushed spices including cardamom, ginger, cloves, and cinnamon. The authentic taste of a Himalayan morning.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_masala_chai_mix.png',
+  },
+  {
+    id: '7',
+    slug: 'corn-tea-local-favorite',
+    title: 'Corn Tea (Local Favorite)',
+    price: 300,
+    description: 'A rustic, roasted infusion made from local corn kernels. Nutty, sweet, and comforting, widely enjoyed in the colder months.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/tea_corn_roasted.png',
+  },
+  {
+    id: '8',
+    slug: 'smoky-second-flush-black-tea',
+    title: 'Smoky Second Flush Black Tea',
+    price: 1500,
+    description: 'Harvested in early summer, this black tea has a distinct muscatel flavor with a hint of wood smoke, typical of the season\'s accelerated growth and processing.',
+    category: 'Tea',
+    status: 'sold',
+    image: '/images/products/tea_smoky_second_flush.png',
+  },
+  {
+    id: '9',
+    slug: 'silver-needle-white-tea',
+    title: 'Silver Needle White Tea',
+    price: 4200,
+    description: 'The most prized white tea, consisting solely of unopened buds covered in silver fuzz. Delicately floral, light, and incredibly refreshing.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_silver_needle.png',
+  },
+  {
+    id: '10',
+    slug: 'hibiscus-petal-infusion',
+    title: 'Hibiscus Petal Infusion',
+    price: 550,
+    description: 'Dried hibiscus petals that brew into a deep crimson, tart herbal tea. Excellent hot or as an iced tea, known for its cooling properties.',
+    category: 'Tea',
+    status: 'available',
+    image: '/images/products/tea_hibiscus.png',
+  },
+  // Group B: The Pantry & Taste (11-20)
+  {
+    id: '11',
+    slug: 'dalle-khursani-vinegar-soaked',
+    title: 'Dalle Khursani (Vinegar Soaked)',
+    price: 350,
+    description: 'The legendary round chili of the Himalayas, preserved in vinegar. Fiery hot with a unique flavor profile that addicts locals and visitors alike.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/pickle_dalle_khursani.png',
+  },
+  {
+    id: '12',
+    slug: 'gundruk-fermented-spinach',
+    title: 'Gundruk (Fermented Spinach)',
+    price: 250,
+    description: 'Sun-dried fermented leafy greens. A staple for making soup or "gundruk ko achar". Rich in catechins and a distinctive umami flavor.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/gundruk_spinach.png',
+  },
+  {
+    id: '13',
+    slug: 'kinema-fermented-soybeans',
+    title: 'Kinema (Fermented Soybeans)',
+    price: 300,
+    description: 'Naturally fermented soybeans with a pungent aroma and sticky texture. A traditional protein source, usually cooked as a savory curry.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/kinema_soybeans.png',
+  },
+  {
+    id: '14',
+    slug: 'hard-churpi-smoked-cheese-chew',
+    title: 'Hard Churpi (Smoked Cheese Chew)',
+    price: 150,
+    description: 'Rock-hard cubes of dried yak cheese. Smoked and preserved, they are meant to be chewed for hours. A classic Himalayan snack.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/churpi_hard_smoked.png',
+  },
+  {
+    id: '15',
+    slug: 'soft-churpi-curry-base',
+    title: 'Soft Churpi (Curry Base)',
+    price: 400,
+    description: 'Fresh, soft cheese made from buttermilk. Tangy and versatile, used as a base for spicy chutneys or vegetable curries.',
+    category: 'Pantry',
+    status: 'sold',
+    image: '/images/products/churpi_soft_fresh.png',
+  },
+  {
+    id: '16',
+    slug: 'kalimpong-lollipop-candy',
+    title: 'Kalimpong Lollipop (Candy)',
+    price: 150,
+    description: 'Famous local sticky candy made from condensed milk and sugar. A nostalgic treat representing the sweet heritage of Kalimpong.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/kalimpong_lollipop.png',
+  },
+  {
+    id: '17',
+    slug: 'titaura-sweet-sour-plum',
+    title: 'Titaura (Sweet & Sour Plum)',
+    price: 100,
+    description: 'Mouth-watering fruit strips made from hog plum or lapsi. A perfect balance of sweet, sour, and spicy flavors.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/titaura_plum.png',
+  },
+  {
+    id: '18',
+    slug: 'nakima-edible-orchid-flower',
+    title: 'Nakima (Edible Orchid Flower)',
+    price: 500,
+    description: 'Seasonal edible orchid flowers, prized for their bitter-sweet taste. Delicately harvested and often cooked with potatoes or meat.',
+    category: 'Pantry',
+    status: 'sold',
+    image: '/images/products/nakima_orchid.png',
+  },
+  {
+    id: '19',
+    slug: 'bamboo-shoot-pickle-mesu',
+    title: 'Bamboo Shoot Pickle (Mesu)',
+    price: 350,
+    description: 'Fermented young bamboo shoots pickled with spices. Crunchy, tangy, and aromatic, it adds a kick to any rice meal.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/bamboo_shoot_pickle.png',
+  },
+  {
+    id: '20',
+    slug: 'wild-himalayan-honey',
+    title: 'Wild Himalayan Honey',
+    price: 1200,
+    description: 'Raw, unfiltered honey collected from wild hives in the forests. Dark, viscous, and containing the essence of medicinal alpine flora.',
+    category: 'Pantry',
+    status: 'available',
+    image: '/images/products/wild_himalayan_honey.png',
+  },
+  // Group C: Textiles & Wearables (21-30)
+  {
+    id: '21',
+    slug: 'lepcha-dumdem-coat-fabric',
+    title: "Lepcha 'Dumdem' Coat Fabric",
+    price: 4500,
+    description: "Traditionally woven fabric featuring the distinctive stripe patterns of the Lepcha tribe. Durable and culturally significant, suitable for coats or heavy throws.",
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/lepcha_dumdem_fabric.png',
+  },
+  {
+    id: '22',
+    slug: 'pure-yak-wool-shawl-grey',
+    title: 'Pure Yak Wool Shawl (Grey)',
+    price: 6800,
+    description: 'Luxuriously soft and incredibly warm shawl woven from the underbelly wool of yaks. Natural grey color, undyed, breathing the warmth of the high altitude.',
+    category: 'Textiles',
+    status: 'sold',
+    image: '/images/products/yak_wool_shawl_grey.png',
+  },
+  {
+    id: '23',
+    slug: 'bhutia-apron-pangden-pattern-cloth',
+    title: 'Bhutia Apron (Pangden) Pattern Cloth',
+    price: 2200,
+    description: 'Brightly colored, striped woven cloth used to make the traditional Pangden apron. Symbolizes the married status of Bhutia women and vibrant Himalayan aesthetics.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/bhutia_pangden_cloth.png',
+  },
+  {
+    id: '24',
+    slug: 'hand-knitted-woolen-socks-thick',
+    title: 'Hand-Knitted Woolen Socks (Thick)',
+    price: 450,
+    description: 'Chunky, hand-knitted socks made by local grandmothers. Perfect for keeping toes warm during the freezing Darjeeling winters.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/woolen_socks_thick.png',
+  },
+  {
+    id: '25',
+    slug: 'dhaka-topi-traditional-cap',
+    title: 'Dhaka Topi (Traditional Cap)',
+    price: 350,
+    description: 'The iconic geometric patterned cap of the Gorkhas. Made from Dhaka fabric, it is a symbol of pride and identity in the hills.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/dhaka_topi_cap.png',
+  },
+  {
+    id: '26',
+    slug: 'sheep-wool-muffler-natural-dye',
+    title: 'Sheep Wool Muffler (Natural Dye)',
+    price: 1200,
+    description: 'Soft sheep wool scarf dyed with natural plant extracts like madder and walnut. Warm, sustainable, and gentle on the skin.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/sheep_wool_muffler.png',
+  },
+  {
+    id: '27',
+    slug: 'silk-khada-ceremonial-scarf',
+    title: 'Silk Khada (Ceremonial Scarf)',
+    price: 250,
+    description: 'A white silk scarf offered as a sign of respect and well-wishes in Himalayan culture. Features auspicious woven symbols of good fortune.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/silk_khada_scarf.png',
+  },
+  {
+    id: '28',
+    slug: 'tibetan-chuba-silk-brocade',
+    title: 'Tibetan Chuba Silk Brocade',
+    price: 9500,
+    description: 'Richly patterned silk brocade fabric used for making Chubas (traditional robes). Shimmers with gold threads and intricate dragon or floral motifs.',
+    category: 'Textiles',
+    status: 'sold',
+    image: '/images/products/tibetan_chuba_brocade.png',
+  },
+  {
+    id: '29',
+    slug: 'felted-wool-slippers',
+    title: 'Felted Wool Slippers',
+    price: 850,
+    description: 'Cozy indoor slippers made from compressed, felted wool. Breathable yet insulating, keeping feet at the perfect temperature.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/felted_wool_slippers.png',
+  },
+  {
+    id: '30',
+    slug: 'canvas-leather-market-bag',
+    title: 'Canvas & Leather Market Bag',
+    price: 1800,
+    description: 'Sturdy canvas bag with goat leather trims. Designed for the daily trip to the bazaar, strong enough to carry vegetables and stylish enough for town.',
+    category: 'Textiles',
+    status: 'available',
+    image: '/images/products/canvas_leather_not_bag.png',
+  },
+  // Group D: Crafts & Home (31-40)
+  {
+    id: '31',
+    slug: 'smoked-bamboo-beer-mug',
+    title: 'Smoked Bamboo Beer Mug',
+    price: 450,
+    description: 'A traditional vessel carved from a single bamboo node. Smoked to seal and color it, often used for drinking "Tongba" or millet beer.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/bamboo_beer_mug.png',
+  },
+  {
+    id: '32',
+    slug: 'cane-murrah-stool-low-seat',
+    title: "Cane 'Murrah' Stool (Low Seat)",
+    price: 1200,
+    description: 'Lightweight yet durable stool woven from cane. A staple in every verandah, perfect for sitting low and enjoying the mountain view.',
+    category: 'Crafts',
+    status: 'sold',
+    image: '/images/products/cane_murrah_stool.png',
+  },
+  {
+    id: '33',
+    slug: 'wooden-mask-bhairab',
+    title: 'Wooden Mask (Bhairab)',
+    price: 3500,
+    description: 'Hand-carved wooden mask depicting Bhairab, the fierce manifestation of Shiva. Used in traditional dances and as a protective wall hanging.',
+    category: 'Art',
+    status: 'available',
+    image: '/images/products/wooden_mask_bhairab.png',
+  },
+  {
+    id: '34',
+    slug: 'hand-beaten-copper-water-jug',
+    title: 'Hand-Beaten Copper Water Jug',
+    price: 2800,
+    description: 'Artisan-made copper jug with a hammered finish. Believed to impart health benefits to the water stored within.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/copper_water_jug.png',
+  },
+  {
+    id: '35',
+    slug: 'miniature-prayer-wheel-desk',
+    title: 'Miniature Prayer Wheel (Desk)',
+    price: 950,
+    description: 'A small, free-standing prayer wheel for your desk. Contains microscopic scrolls of mantras; spinning it is said to spread compassion.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/miniature_prayer_wheel.png',
+  },
+  {
+    id: '36',
+    slug: 'knot-of-eternity-wall-hanging',
+    title: 'Knot of Eternity Wall Hanging',
+    price: 1500,
+    description: 'Carved wood or knotted cord depicting the Endless Knot. A symbol of the interconnectedness of all things and eternal wisdom.',
+    category: 'Art',
+    status: 'available',
+    image: '/images/products/knot_eternity_wall_hanging.png',
+  },
+  {
+    id: '37',
+    slug: 'bamboo-root-sculpture',
+    title: 'Bamboo Root Sculpture',
+    price: 4500,
+    description: 'Unique sculpture carved from the gnarled root of a bamboo plant. Naturally shaped by the earth, refined by the artist\'s hand.',
+    category: 'Art',
+    status: 'sold',
+    image: '/images/products/bamboo_root_sculpture.png',
+  },
+  {
+    id: '38',
+    slug: 'juniper-wood-incense-holder',
+    title: 'Juniper Wood Incense Holder',
+    price: 550,
+    description: 'Simple and elegant incense holder carved from fragrant Juniper wood. Adds a woody scent of its own when near heat.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/juniper_incense_holder.png',
+  },
+  {
+    id: '39',
+    slug: 'brass-butter-lamp',
+    title: 'Brass Butter Lamp',
+    price: 1200,
+    description: 'Solid brass lamp used for burning butter or oil in offerings. symbolising the illumination of wisdom.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/brass_butter_lamp.png',
+  },
+  {
+    id: '40',
+    slug: 'decorative-kukri-display-only',
+    title: 'Decorative Kukri (Display Only)',
+    price: 6500,
+    description: 'Ornately engraved Kukri knife with a bone or wood handle. Intended for display to honor the martial history of the region.',
+    category: 'Crafts',
+    status: 'sold',
+    image: '/images/products/decorative_kukri_knife.png',
+  },
+  // Group E: Art & Wellness (41-50)
+  {
+    id: '41',
+    slug: 'argeli-paper-journal-leather-bound',
+    title: 'Argeli Paper Journal (Leather Bound)',
+    price: 1850,
+    description: 'Handmade paper from the Daphne shrub, bound in local leather. The textured acid-free pages are perfect for sketching or journaling.',
+    category: 'Art',
+    status: 'available',
+    image: '/images/products/argeli_paper_journal.png',
+  },
+  {
+    id: '42',
+    slug: 'thangka-painting-green-tara',
+    title: 'Thangka Painting (Green Tara)',
+    price: 15000,
+    description: 'Masterfully painted Thangka of Green Tara. Created using mineral pigments and gold dust on cotton canvas. A spiritual masterpiece.',
+    category: 'Art',
+    status: 'sold',
+    image: '/images/products/thangka_painting_green_tara.png',
+  },
+  {
+    id: '43',
+    slug: 'singing-bowl-7-metal-alloy',
+    title: 'Singing Bowl (7 Metal Alloy)',
+    price: 5500,
+    description: 'Hand-hammered singing bowl made from a traditional seven-metal alloy. Produces a deep, resonating sound for meditation and healing.',
+    category: 'Wellness',
+    status: 'available',
+    image: '/images/products/singing_bowl_7_metal.png',
+  },
+  {
+    id: '44',
+    slug: 'rhododendron-incense-sticks',
+    title: 'Rhododendron Incense Sticks',
+    price: 250,
+    description: 'Natural incense sticks made with dried rhododendron flowers and herbs. Clears the air and creates a peaceful atmosphere.',
+    category: 'Wellness',
+    status: 'available',
+    image: '/images/products/rhododendron_incense_sticks.png',
+  },
+  {
+    id: '45',
+    slug: 'lemongrass-essential-oil',
+    title: 'Lemongrass Essential Oil',
+    price: 650,
+    description: 'pure essential oil distilled from locally grown lemongrass. Citrussy and uplifting, used for aromatherapy or natural insect repellent.',
+    category: 'Wellness',
+    status: 'available',
+    image: '/images/products/lemongrass_essential_oil.png',
+  },
+  {
+    id: '46',
+    slug: 'yak-milk-handmade-soap',
+    title: 'Yak Milk Handmade Soap',
+    price: 350,
+    description: 'Moisturizing soap bar made with rich yak milk and natural oils. Gentle on the skin and free from harsh chemicals.',
+    category: 'Wellness',
+    status: 'available',
+    image: '/images/products/yak_milk_soap.png',
+  },
+  {
+    id: '47',
+    slug: 'pressed-flower-bookmark-set',
+    title: 'Pressed Flower Bookmark Set',
+    price: 200,
+    description: 'Set of bookmarks featuring real pressed wildflowers from the Darjeeling hills. Laminated to preserve their delicate beauty.',
+    category: 'Art',
+    status: 'available',
+    image: '/images/products/pressed_flower_bookmark.png',
+  },
+  {
+    id: '48',
+    slug: 'ceramic-orchid-pot-local-clay',
+    title: 'Ceramic Orchid Pot (Local Clay)',
+    price: 850,
+    description: 'Hand-thrown pot with side holes, specifically designed for orchids. Made from local clay and glazed in earth tones.',
+    category: 'Crafts',
+    status: 'sold',
+    image: '/images/products/ceramic_orchid_pot.png',
+  },
+  {
+    id: '49',
+    slug: 'beeswax-candle-monastery-style',
+    title: 'Beeswax Candle (Monastery Style)',
+    price: 450,
+    description: 'Pure beeswax candle rolled by hand. Burns with a clean, bright flame and a subtle honey scent.',
+    category: 'Wellness',
+    status: 'available',
+    image: '/images/products/beeswax_candle_monastery.png',
+  },
+  {
+    id: '50',
+    slug: 'old-monk-style-rum-glass-set-upcycled',
+    title: 'Old Monk Style Rum Glass Set (Upcycled)',
+    price: 1200,
+    description: 'Set of drinking glasses upcycled from iconic Old Monk rum bottles. Polished edges and a quirky tribute to a local favorite spirit.',
+    category: 'Crafts',
+    status: 'available',
+    image: '/images/products/old_monk_rum_glass.png',
+  }
+];
+
+async function importProducts() {
+  console.log('Importing products...');
+  
+  for (const product of products) {
+    console.log(`Processing ${product.title}...`);
+    
+    // Create the document
+    try {
+      // Check if it already exists
+      const query = `*[_type == "product" && slug.current == "${product.slug}"][0]`;
+      const existing = await client.fetch(query);
+      
+      if (existing) {
+        console.log(`Product ${product.title} already exists. Skipping.`);
+        continue;
+      }
+      
+      const doc = {
+        _type: 'product',
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        description: product.description,
+        category: product.category,
+        status: product.status,
+        slug: {
+          _type: 'slug',
+          current: product.slug,
+        },
+        // We are NOT uploading images automatically in this simple script as they are local paths.
+        // We will skip image upload for now or assume a future manual step.
+        // Or better, we could upload them if they were fully resolved.
+      };
+      
+      await client.create(doc);
+      console.log(`Created product: ${product.title}`);
+    } catch (err) {
+      console.error(`Failed to import ${product.title}:`, err.message);
+    }
+  }
+  
+  console.log('Done!');
+}
+
+importProducts();

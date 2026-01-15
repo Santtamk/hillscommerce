@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactSection from "@/components/ContactSection";
 import SmoothScroll from "@/components/SmoothScroll";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,19 +36,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${playfair.variable} ${mono.variable} antialiased bg-[#FDFBF7] text-[#1C2321] selection:bg-[#BE5E46]/20`}
-      >
-        
-        <Navbar />
-        <main className="flex-1 w-full">
-          {children}
-        </main>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${inter.variable} ${playfair.variable} ${mono.variable} antialiased bg-[#FDFBF7] text-[#1C2321] selection:bg-[#BE5E46]/20`}
+        >
+          
+          <Navbar />
+          <main className="flex-1 w-full">
+            {children}
+          </main>
 
-        <ContactSection />
-        <Footer />
-      </body>
-    </html>
+          <ContactSection />
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

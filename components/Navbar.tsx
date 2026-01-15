@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCartStore } from "@/store/cartStore";
 import { siteContent } from "@/data/content";
 import { ShoppingBag, MountainSnow } from "lucide-react";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 
 export default function Navbar() {
@@ -14,6 +15,7 @@ export default function Navbar() {
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
+    useCartStore.getState().fetchFromServer();
   }, []);
 
   return (
@@ -46,6 +48,17 @@ export default function Navbar() {
               </span>
             )}
           </Link>
+
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <button className="text-sm font-medium uppercase tracking-widest text-[var(--color-pine)/80] hover:text-[var(--color-rust)]">
+                Sign In
+              </button>
+            </SignInButton>
+          </SignedOut>
         </div>
       </div>
     </nav>
