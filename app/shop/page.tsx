@@ -12,6 +12,8 @@ import FadeIn from "@/components/FadeIn";
 const ITEMS_PER_PAGE = 12;
 const CATEGORIES = ["All", "Tea", "Pantry", "Textiles", "Crafts", "Wellness", "Art"];
 
+import { useSanityIdMap } from "@/hooks/useSanityIdMap";
+
 export default function ShopPage() {
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -21,6 +23,7 @@ export default function ShopPage() {
 }
 
 function ShopContent() {
+  const idMap = useSanityIdMap();
   const searchParams = useSearchParams();
   const initialCategory = searchParams.get("category");
   const [activeCategory, setActiveCategory] = useState(initialCategory && CATEGORIES.includes(initialCategory) ? initialCategory : "All");
@@ -162,7 +165,7 @@ function ShopContent() {
         <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {currentProducts.map((product, index) => (
             <FadeIn key={product.id} delay={index * 0.05} direction="up">
-              <ProductCard product={product} />
+              <ProductCard product={product} sanityId={idMap[product.id]} />
             </FadeIn>
           ))}
         </div>

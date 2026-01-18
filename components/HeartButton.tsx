@@ -1,58 +1,47 @@
 "use client";
 
 import { Heart } from "lucide-react";
-import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
+import { useWishlistStore } from "@/store/wishlistStore";
+import { Product } from "@/data/products";
 
 interface HeartButtonProps {
-  productId: string;
+  product: Product;
+  sanityId: string;
 }
 
-export default function HeartButton({ productId }: HeartButtonProps) {
-  const [isLiked, setIsLiked] = useState(false); // Ideally this should be initialized with real data
-  const [isLoading, setIsLoading] = useState(false);
+export default function HeartButton({ product, sanityId }: HeartButtonProps) {
   const router = useRouter();
   const { isSignedIn } = useAuth();
+  const { isInWishlist, addToWishlist, removeFromWishlist } = useWishlistStore();
 
-  const handleToggle = async () => {
+  const isLiked = isInWishlist(product.id);
+
+  const handleToggle = async (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent navigating if inside a Link
+    
     if (!isSignedIn) {
-      router.push("/sign-in"); // Or open modal
+      router.push("/sign-in");
       return;
     }
 
-    setIsLoading(true);
-    // Optimistic update
-    setIsLiked((prev) => !prev);
-
-    try {
-      const res = await fetch("/api/wishlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ productId }),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to update wishlist");
-      }
-      
-      router.refresh();
-    } catch (error) {
-      console.error(error);
-      setIsLiked((prev) => !prev); // Revert on error
-    } finally {
-      setIsLoading(false);
+    if (isLiked) {
+      await removeFromWishlist(product.id);
+    } else {
+      await addToWishlist(product, sanityId);
     }
+    
+    router.refresh();
   };
 
   return (
     <button
       onClick={handleToggle}
-      disabled={isLoading}
-      className="group relative flex items-center justify-center p-3 transition-transform active:scale-95"
+      className="group relative flex items-center justify-center p-3 transition-transform active:scale-95 z-30"
     >
       <Heart
-        className={`h-6 w-6 transition-colors ${
+        className={`h-6 w-6 transition-colors drop-shadow-sm ${
           isLiked
             ? "fill-[var(--color-rust)] text-[var(--color-rust)]"
             : "text-[var(--color-pine)] group-hover:text-[var(--color-rust)]"

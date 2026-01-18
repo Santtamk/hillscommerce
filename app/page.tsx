@@ -6,6 +6,7 @@ import { products } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
+import { useSanityIdMap } from "@/hooks/useSanityIdMap";
 
 const CATEGORIES = [
   { name: "Tea", image: products.find(p => p.category === "Tea")?.image || "" },
@@ -18,6 +19,7 @@ const CATEGORIES = [
 
 export default function Home() {
   const { hero, about } = siteContent;
+  const idMap = useSanityIdMap();
   
   // Get first 6 products for Latest Arrivals
   const latestArrivals = products.slice(0, 6);
@@ -154,7 +156,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
           {latestArrivals.map((product, index) => (
             <FadeIn key={product.id} delay={index * 0.1}>
-              <ProductCard product={product} />
+              <ProductCard product={product} sanityId={idMap[product.id]} />
             </FadeIn>
           ))}
         </div>

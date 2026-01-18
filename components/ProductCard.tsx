@@ -5,13 +5,15 @@ import { Product } from "@/data/products";
 import { useCartStore } from "@/store/cartStore";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import HeartButton from "@/components/HeartButton";
 
 
 interface ProductCardProps {
   product: Product;
+  sanityId?: string;
 }
 
-export default function ProductCard({ product }: ProductCardProps) {
+export default function ProductCard({ product, sanityId }: ProductCardProps) {
   const { addToCart, cart } = useCartStore();
   const isInCart = cart.some((item) => item.id === product.id);
   const isSold = product.status === "sold";
@@ -26,6 +28,13 @@ export default function ProductCard({ product }: ProductCardProps) {
         borderRadius: "var(--radius-organic)", // Use CSS variable or fallback
       }}
     >
+      {/* Heart Button */}
+      {sanityId && (
+        <div className="absolute top-2 right-2 z-20">
+          <HeartButton product={product} sanityId={sanityId} />
+        </div>
+      )}
+
       {/* Tape effect (purely decorative CSS potential) */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-white/40 rotate-[-1deg] backdrop-blur-sm border border-white/20 z-10 opacity-70" />
 

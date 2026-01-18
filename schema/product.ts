@@ -64,6 +64,18 @@ export const product = defineType({
       },
     }),
     defineField({
+      name: "stock",
+      title: "Stock",
+      type: "number",
+      validation: (Rule) => Rule.min(0),
+    }),
+    defineField({
+      name: "isOutOfStock",
+      title: "Is Out of Stock",
+      type: "boolean",
+      readOnly: true,
+    }),
+    defineField({
       name: "image",
       title: "Image",
       type: "image",
